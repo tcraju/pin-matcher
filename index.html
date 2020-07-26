@@ -61,9 +61,9 @@
 
     <script>
         //random value generator area start
-        let generatorBtn = document.querySelector('button.generate-btn');
+        const pinGeneratorBtn = document.querySelector('button.generate-btn');
         let generatedPin = document.getElementById('generated-pin');
-        generatorBtn.addEventListener('click', function () {
+        pinGeneratorBtn.addEventListener('click', function () {
             generatedPin.value = Math.floor(Math.random() * 1000) + 1000;
         });
         //random value generator area end
@@ -83,8 +83,10 @@
         //pin input area end
 
         // submit button action area start
+
         let clickCount = 0; //to use in try limit ara start
         const submitBtn = document.querySelector('button.submit-btn');
+
         submitBtn.addEventListener('click', function () {
             if (generatedPin.value == inputtedPin.value) { //notification toggle area start
                 document.getElementById('notify-correct').style.display = "block";
@@ -107,7 +109,6 @@
                 document.querySelector('.action-left').innerText = "0 try left";
                 submitBtn.disabled = true; //disabling submit btn after 3 try
             }
-
         });
     </script>
 </body>
