@@ -57,61 +57,59 @@
                 <p id="notify-correct" class="notify">✅ Pin Matched... Secret door is opening for you</p>
             </div>
         </div>
+    </div>
 
-        <script>
-            //random value generator area start
-            let generatorBtn = document.querySelector('button.generate-btn');
-            let generatedPin = document.getElementById('generated-pin');
-            generatorBtn.addEventListener('click', function () {
-                generatedPin.value = Math.floor(Math.random() * 1000) + 1000
-            });
-            //random value generator area end
+    <script>
+        //random value generator area start
+        let generatorBtn = document.querySelector('button.generate-btn');
+        let generatedPin = document.getElementById('generated-pin');
+        generatorBtn.addEventListener('click', function () {
+            generatedPin.value = Math.floor(Math.random() * 1000) + 1000;
+        });
+        //random value generator area end
 
-            //pin input area start
-            let inputtedPin = document.getElementById('inputted-pin')
+        //pin input area start
+        let inputtedPin = document.getElementById('inputted-pin');
 
-            function displayHandler(content) {
-                if (content >= 0 && content <= 9) {
-                    inputtedPin.value = inputtedPin.value + content
-                } else if (content == '<') {
-                    inputtedPin.value = inputtedPin.value.slice(0, -1)
-                } else if (content == 'C') {
-                    inputtedPin.value = "";
-                }
+        function displayHandler(content) {
+            if (content >= 0 && content <= 9) {
+                inputtedPin.value = inputtedPin.value + content;
+            } else if (content == '<') {
+                inputtedPin.value = inputtedPin.value.slice(0, -1);
+            } else if (content == 'C') {
+                inputtedPin.value = "";
             }
-            //pin input area end
+        }
+        //pin input area end
 
-            // submit button action area start
-            let clickCount = 0;
-            const submitBtn = document.querySelector('button.submit-btn');
-            submitBtn.addEventListener('click', function () {
-                if (generatedPin.value == inputtedPin.value) { //notification toggle area start
-                    document.getElementById('notify-correct').style.display = "block";
-                    document.getElementById('notify-wrong').style.display = "none";
-                } else {
+        // submit button action area start
+        let clickCount = 0; //to use in try limit ara start
+        const submitBtn = document.querySelector('button.submit-btn');
+        submitBtn.addEventListener('click', function () {
+            if (generatedPin.value == inputtedPin.value) { //notification toggle area start
+                document.getElementById('notify-correct').style.display = "block";
+                document.getElementById('notify-wrong').style.display = "none";
+            } else {
 
-                    document.getElementById('notify-correct').style.display = "none";
-                    document.getElementById('notify-wrong').style.display = "block";
-                } //notification toggle area End
+                document.getElementById('notify-correct').style.display = "none";
+                document.getElementById('notify-wrong').style.display = "block";
+            } //notification toggle area End
 
-                 // try limit area start
-                clickCount += 1;
-                if (clickCount == 0) {
-                    document.querySelector('.action-left').innerText = "3 try left"
-                } else if (clickCount == 1) {
-                    document.querySelector('.action-left').innerText = "2 try left"
-                } else if (clickCount == 2) {
-                    document.querySelector('.action-left').innerText = "1 try left"
-                } else if (clickCount >= 3) {
-                    document.querySelector('.action-left').innerText = "0 try left"
-                    submitBtn.disabled = true; //disabling submit btn after 3 try
-                }
+            // try limit area start
+            clickCount += 1;
+            if (clickCount === 0) {
+                document.querySelector('.action-left').innerText = "3 try left";
+            } else if (clickCount == 1) {
+                document.querySelector('.action-left').innerText = "2 try left";
+            } else if (clickCount == 2) {
+                document.querySelector('.action-left').innerText = "1 try left";
+            } else if (clickCount >= 3) {
+                document.querySelector('.action-left').innerText = "0 try left";
+                submitBtn.disabled = true; //disabling submit btn after 3 try
+            }
 
-            })
-        </script>
-
-
-
+        });
+    </script>
 </body>
 
 </html>
