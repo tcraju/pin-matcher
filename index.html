@@ -61,7 +61,7 @@
 
     <script>
         //random value generator area start
-        let pinGeneratorBtn = document.querySelector('button.generate-btn');
+        const pinGeneratorBtn = document.querySelector('button.generate-btn');
         let generatedPin = document.getElementById('generated-pin');
         pinGeneratorBtn.addEventListener('click', function () {
             generatedPin.value = Math.floor(Math.random() * 1000) + 1000;
